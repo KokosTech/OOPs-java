@@ -3,12 +3,13 @@ import styles.Judo;
 import styles.Karate;
 import styles.MuayThai;
 import tournament.Tournament;
+import tournament.TournamentQ;
 
 public class App {
 
   public static void main(String[] args) throws Exception {
     try {
-      Tournament tournament = new Tournament("Tournament");
+      TournamentQ tournament = new TournamentQ("Tournament");
       tournament.addParticipant(new Box("Boxer 1", (short) 10, 100.0));
       tournament.addParticipant(new Judo("Judo 1", (short) 20, 400.0));
       tournament.addParticipant(new Karate("Karate 1", (short) 24, 150.0));
