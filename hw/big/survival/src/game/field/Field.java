@@ -1,21 +1,23 @@
 package game.field;
 
-import java.util.Random;
-
 import game.figures.Figure;
-import game.figures.Hero;
+import java.util.Random;
 
 public class Field {
 
-  final Random random;
+  private static final String COORDINATES_ARE_NOT_VALID = "Coordinates are not valid";
 
-  private final Integer rows, cols;
+  private final Random random;
+
+  private final Integer rows;
+  private final Integer cols;
+
   private Figure[][] field;
 
   public Field(Integer rows, Integer cols) throws IllegalArgumentException {
     if (rows < 2 && cols < 2) {
       throw new IllegalArgumentException(
-        "Rows and cols must be greater than 0"
+        "Rows and cols must be greater than 1"
       );
     }
 
@@ -66,7 +68,7 @@ public class Field {
     }
 
     if (!areValidCoordinates(figure.getX(), figure.getY())) {
-      throw new IllegalArgumentException("Coordinates are not valid");
+      throw new IllegalArgumentException(COORDINATES_ARE_NOT_VALID);
     }
 
     if (!isPositionEmpty(figure.getX(), figure.getY())) {
@@ -84,7 +86,7 @@ public class Field {
     }
 
     if (!areValidCoordinates(figure.getX(), figure.getY())) {
-      throw new IllegalArgumentException("Coordinates are not valid");
+      throw new IllegalArgumentException(COORDINATES_ARE_NOT_VALID);
     }
 
     if (this.field[figure.getX()][figure.getY()] == null) {
@@ -122,27 +124,26 @@ public class Field {
     return this.field[x][y];
   }
 
-  public Figure[][] getField() {
-    return field;
-  }
-
   // Helpers
 
   private void setFigurePosition(Figure figure) {
-    Integer x, y;
+    Integer x;
+    Integer y;
 
     do {
       x = getRandom(this.cols);
       y = getRandom(this.rows);
     } while (!isPositionEmpty(x, y));
 
+    this.field[x][y] = figure;
+
     figure.setX(x);
     figure.setY(y);
   }
 
-  public void setFigurePosition(Hero figure, Integer x, Integer y) {
+  public void setFigurePosition(Figure figure, Integer x, Integer y) {
     if (!areValidCoordinates(x, y)) {
-      throw new IllegalArgumentException("Coordinates are not valid");
+      throw new IllegalArgumentException(COORDINATES_ARE_NOT_VALID);
     }
 
     if (figure.getX() != null && figure.getY() != null) {

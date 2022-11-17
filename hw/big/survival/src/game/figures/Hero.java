@@ -11,34 +11,13 @@ public class Hero extends Figure {
     throws IllegalArgumentException {
     super(name.charAt(0), name);
     if (health < 0 || power < 0) throw new IllegalArgumentException(
-      "Health and power must be positive"
+      "Health or/and power must be positive"
     );
 
     this.health = health;
     this.power = power;
 
     this.activeConsumables = new ArrayList<>();
-  }
-
-  @Override
-  public String toString() {
-    return (
-      "Hero [" +
-      this.initial +
-      "] " +
-      this.name +
-      " [health=" +
-      this.health +
-      ", power=" +
-      this.power +
-      ", activeConsumables=" +
-      this.activeConsumables +
-      "]"
-    );
-  }
-
-  public boolean isAlive() {
-    return this.health > 0;
   }
 
   // Manage Active Consumables
@@ -72,13 +51,38 @@ public class Hero extends Figure {
     return power;
   }
 
+  @Override
+  public String toString() {
+    return (
+      "Hero [" +
+      this.initial +
+      "] " +
+      this.name +
+      " [health=" +
+      this.health +
+      ", power=" +
+      this.power +
+      ", activeConsumables=" +
+      this.activeConsumables.size() +
+      "]"
+    );
+  }
+
+  public boolean isAlive() {
+    return this.health > 0;
+  }
+
   // Setters
 
   public void setHealth(Integer health) {
+    if (health < 0) throw new IllegalArgumentException(
+      "Health must be positive"
+    );
     this.health = health;
   }
 
   public void setPower(Integer power) {
+    if (power < 0) throw new IllegalArgumentException("Power must be positive");
     this.power = power;
   }
 
@@ -104,25 +108,28 @@ public class Hero extends Figure {
 
   // Actions
 
+  // null - both die
+  // this - this dies
+  // rhs - oponent dies
   public Hero fight(Hero rhs) {
-    if (
-      this.power > rhs.power ||
-      (this.power == rhs.getPower() && this.health > rhs.health)
-    ) {
+    if (this.power > rhs.power) {
       rhs.setHealth(0);
       return rhs;
-    }
-
-    if (
-      this.power < rhs.power ||
-      (this.power == rhs.getPower() && this.health < rhs.health)
-    ) {
+    } else if (this.power < rhs.power) {
       this.health = 0;
       return this;
+    } else {
+      if (this.health > rhs.health) {
+        rhs.setHealth(0);
+        return rhs;
+      } else if (this.health < rhs.health) {
+        this.health = 0;
+        return this;
+      } else {
+        this.health = 0;
+        rhs.setHealth(0);
+        return null;
+      }
     }
-
-    this.health = 0;
-    rhs.setHealth(0);
-    return null;
   }
 }

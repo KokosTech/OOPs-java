@@ -3,10 +3,10 @@ package game.figures.consumables;
 import game.figures.Consumable;
 import game.figures.Hero;
 
-public class Beer extends Consumable {
+public class Whiskey extends Consumable {
 
-  public Beer(Integer level) throws IllegalArgumentException {
-    super('B', "Beer", level);
+  public Whiskey(Integer level) throws IllegalArgumentException {
+    super('W', "Whiskey", level);
     this.usesLeft = level;
   }
 

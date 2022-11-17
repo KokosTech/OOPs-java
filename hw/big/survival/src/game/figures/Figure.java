@@ -5,8 +5,8 @@ public abstract class Figure {
   private Integer x;
   private Integer y;
 
-  protected Character initial;
-  protected String name;
+  protected final Character initial;
+  protected final String name;
 
   public Figure(Character initial, String name)
     throws IllegalArgumentException {
@@ -49,9 +49,5 @@ public abstract class Figure {
 
   public void setY(Integer y) {
     this.y = y;
-  }
-
-  public String getPosition() {
-    return null;
-  }
+  }ƒ
 }
