@@ -1,6 +1,6 @@
 import game.Game;
 import game.figures.Hero;
-import game.figures.consumables.Beer;
+import game.figures.consumables.Whiskey;
 import game.figures.consumables.Broccoli;
 import game.figures.consumables.Mushroom;
 import game.figures.consumables.Orange;
@@ -20,7 +20,7 @@ public class Main {
       game.addFigure(new Rice(1));
       game.addFigure(new Mushroom(5));
 
-      game.addFigure(new Beer(2));
+      game.addFigure(new Whiskey(2));
       game.addFigure(new Orange(4));
       game.addFigure(new Pizza(5));
 
