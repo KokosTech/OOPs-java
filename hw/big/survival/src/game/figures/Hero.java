@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class Hero extends Figure {
 
-  Integer health, power;
+  Integer health;
+  Integer power;
   ArrayList<Consumable> activeConsumables;
 
   public Hero(String name, Integer health, Integer power)

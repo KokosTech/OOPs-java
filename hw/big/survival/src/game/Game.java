@@ -106,7 +106,7 @@ public class Game {
     moveHeroHelper(hero, oldX, oldY);
   }
 
-  public void moveHeroHelper(Hero hero, Integer x, Integer y) {
+  private void moveHeroHelper(Hero hero, Integer x, Integer y) {
     if (hero == null) {
       throw new IllegalArgumentException("Hero cannot be null");
     }

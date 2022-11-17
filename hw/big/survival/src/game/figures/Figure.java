@@ -8,9 +8,9 @@ public abstract class Figure {
   protected final Character initial;
   protected final String name;
 
-  public Figure(Character initial, String name)
+  protected Figure(Character initial, String name)
     throws IllegalArgumentException {
-    if (initial == null || initial == ' ' || name.isEmpty()) {
+    if (initial == null || initial == ' ' || name == null || name.isEmpty()) {
       throw new IllegalArgumentException("Initial and name cannot be null");
     }
 
