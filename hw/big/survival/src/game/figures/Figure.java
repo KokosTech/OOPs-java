@@ -41,6 +41,10 @@ public abstract class Figure {
     return name;
   }
 
+  public String getPosition() {
+    return "(" + this.x + ", " + this.y + ")";
+  }
+
   // Setters
 
   public void setX(Integer x) {
@@ -49,5 +53,5 @@ public abstract class Figure {
 
   public void setY(Integer y) {
     this.y = y;
-  }ƒ
+  }
 }

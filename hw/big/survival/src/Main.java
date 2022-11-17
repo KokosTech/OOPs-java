@@ -12,9 +12,9 @@ public class Main {
   public static void main(String[] args) {
     try {
       Game game = new Game(3, 3);
-      game.addFigure(new Hero("Omori", 2000, 300));
-      game.addFigure(new Hero("Basil", 1500, 200));
-      game.addFigure(new Hero("Hero", 2500, 400));
+      game.addFigure(new Hero("0Omori", 2000, 300));
+      game.addFigure(new Hero("1Basil", 1500, 200));
+      game.addFigure(new Hero("2Hero", 2500, 400));
 
       game.addFigure(new Broccoli(3));
       game.addFigure(new Rice(1));

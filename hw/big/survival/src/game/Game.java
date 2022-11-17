@@ -26,6 +26,16 @@ public class Game {
 
   // Start
 
+  private boolean isOver() {
+    if (this.heroes.size() > 1) return false;
+
+    System.out.println("Game over!");
+    System.out.println("Winner: " + this.heroes.get(0).getName());
+
+    this.print();
+    return true;
+  }
+
   public void start() throws IllegalArgumentException {
     if (this.heroes.size() < 2) throw new IllegalArgumentException(
       "Not enough heroes"
@@ -33,18 +43,10 @@ public class Game {
 
     System.out.println("Game started!");
 
-    while (true) {
-      for (Hero hero : this.heroes) {
+    while (!isOver()) {
+      for (Integer i = 0; i < this.heroes.size(); ++i) {
         this.print();
-        this.moveHero(hero);
-      }
-
-      if (this.heroes.size() < 2) {
-        System.out.println("Game over!");
-        System.out.println("Winner: " + this.heroes.get(0).getName());
-
-        this.print();
-        break;
+        this.moveHero(this.heroes.get(i));
       }
     }
   }
@@ -66,34 +68,45 @@ public class Game {
       return;
     }
 
-    System.out.println(hero.getName() + " is moving...");
+    System.out.println(hero + " is moving...");
 
     switch (this.getDirection()) {
       case UP:
         if (this.isValidMove(oldX, oldY - 1)) {
-          hero.setY(oldY - 1);
+          oldY -= 1;
+          System.out.print(hero + " moved up");
         }
         break;
       case DOWN:
         if (this.isValidMove(oldX, oldY + 1)) {
-          hero.setY(oldY + 1);
+          oldY += 1;
+          System.out.print(hero + " moved down");
         }
         break;
       case LEFT:
         if (this.isValidMove(oldX - 1, oldY)) {
-          hero.setX(oldX - 1);
+          oldX -= 1;
+          System.out.print(hero + " moved left");
         }
         break;
       case RIGHT:
         if (this.isValidMove(oldX + 1, oldY)) {
-          hero.setX(oldX + 1);
+          oldX += 1;
+          System.out.print(hero + " moved right");
         }
         break;
     }
-    _moveHero(hero, hero.getX(), hero.getY());
+
+    if (oldX != hero.getX() || oldY != hero.getY()) {
+      System.out.println(
+        " from " + hero.getX() + " " + hero.getY() + " to " + oldX + " " + oldY
+      );
+    }
+
+    moveHeroHelper(hero, oldX, oldY);
   }
 
-  public void _moveHero(Hero hero, Integer x, Integer y) {
+  public void moveHeroHelper(Hero hero, Integer x, Integer y) {
     if (hero == null) {
       throw new IllegalArgumentException("Hero cannot be null");
     }
@@ -102,36 +115,51 @@ public class Game {
       throw new IllegalArgumentException("Coordinates are not valid");
     }
 
-    Hero deadHero = null;
-
     if (!this.field.isPositionEmpty(x, y)) {
-      if (this.field.getFigure(x, y) instanceof Hero) {
+      if (this.field.getFigure(x, y) instanceof Hero oponent) {
+        if (hero == this.field.getFigure(x, y)) {
+          return;
+        }
         System.out.println(
-          "Hero " +
-          hero.getName() +
-          " fights hero " +
-          this.field.getFigure(x, y).getName()
+          "Hero " + hero.getName() + " fights hero " + oponent.getName()
         );
 
-        deadHero = hero.fight((Hero) this.field.getFigure(x, y));
-        if (deadHero != null) {
-          this.removeFigure(deadHero);
-        } else {
-          this.removeFigure(this.field.getFigure(x, y));
-          this.removeFigure(hero);
-        }
+        battle(hero, oponent);
       } else if (this.field.getFigure(x, y) instanceof Consumable) {
         System.out.println(
           "Hero " +
           hero.getName() +
-          " ate a " +
+          " consumed a " +
           this.field.getFigure(x, y).getName()
         );
         ((Consumable) this.field.getFigure(x, y)).apply(hero);
+        this.removeFigure(this.field.getFigure(x, y));
+
+        if (!hero.isAlive()) {
+          System.out.println("Hero " + hero.getName() + " died from poison");
+          this.heroes.remove(hero);
+        }
       }
     }
 
-    this.field.setFigurePosition(hero, x, y);
+    if (heroes.contains(hero)) {
+      this.field.moveFigure(hero, x, y);
+    }
+  }
+
+  private void battle(Hero hero1, Hero hero2) {
+    if (hero1 == null || hero2 == null) {
+      throw new IllegalArgumentException("Heroes cannot be null");
+    }
+
+    Hero deadHero = hero1.fight(hero2);
+
+    if (deadHero != null) {
+      this.removeFigure(deadHero);
+    } else {
+      this.removeFigure(hero1);
+      this.removeFigure(hero2);
+    }
   }
 
   // Validate Methods
@@ -147,9 +175,9 @@ public class Game {
 
     if (figure instanceof Hero) {
       this.heroes.add((Hero) figure);
-      System.out.print("Hero added");
+      System.out.print("Hero added ");
     } else {
-      System.out.print("Consumable added");
+      System.out.print("Consumable added ");
     }
 
     System.out.println(figure.toString() + "at" + figure.getPosition());
@@ -162,12 +190,12 @@ public class Game {
 
     if (figure instanceof Hero) {
       this.heroes.remove(figure);
-      System.out.print("Hero removed");
+      System.out.print("Hero removed ");
     } else {
-      System.out.print("Consumable removed");
+      System.out.print("Consumable removed ");
     }
 
-    System.out.println(figure.toString() + "at" + figure.getPosition());
+    System.out.println(figure.toString() + " at " + figure.getPosition());
 
     return this;
   }

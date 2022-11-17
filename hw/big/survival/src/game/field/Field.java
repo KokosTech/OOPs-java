@@ -80,6 +80,22 @@ public class Field {
     this.field[figure.getX()][figure.getY()] = figure;
   }
 
+  public void moveFigure(Figure figure, Integer newX, Integer newY) {
+    if (figure == null) {
+      throw new IllegalArgumentException("Figure cannot be null");
+    }
+
+    if (!areValidCoordinates(newX, newY)) {
+      throw new IllegalArgumentException(COORDINATES_ARE_NOT_VALID);
+    }
+
+    this.field[figure.getX()][figure.getY()] = null;
+    this.field[newX][newY] = figure;
+
+    figure.setX(newX);
+    figure.setY(newY);
+  }
+
   public void removeFigure(Figure figure) {
     if (figure == null) {
       throw new IllegalArgumentException("Figure cannot be null");
@@ -95,7 +111,7 @@ public class Field {
       );
     }
 
-    this.field[figure.getY()][figure.getX()] = null;
+    this.field[figure.getX()][figure.getY()] = null;
   }
 
   // Hero Methods

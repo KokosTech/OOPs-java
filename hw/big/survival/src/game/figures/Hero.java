@@ -31,13 +31,13 @@ public class Hero extends Figure {
   }
 
   public void applyActiveConsumables() {
-    for (Consumable consumable : this.activeConsumables) {
-      consumable.apply(this);
-      consumable.decreaseUsesLeft();
+    for (Integer i = 0; i < this.activeConsumables.size(); ++i) {
+      this.activeConsumables.get(i).apply(this);
+      this.activeConsumables.get(i).decreaseUsesLeft();
 
-      if (consumable.getUsesLeft() == 0) this.removeActiveConsumable(
-          consumable
-        );
+      if (
+        this.activeConsumables.get(i).getUsesLeft() == 0
+      ) this.activeConsumables.remove(i);
     }
   }
 
@@ -113,19 +113,24 @@ public class Hero extends Figure {
   // rhs - oponent dies
   public Hero fight(Hero rhs) {
     if (this.power > rhs.power) {
+      System.out.println(this + " killed " + rhs);
       rhs.setHealth(0);
       return rhs;
     } else if (this.power < rhs.power) {
+      System.out.println(rhs + " killed " + this);
       this.health = 0;
       return this;
     } else {
       if (this.health > rhs.health) {
+        System.out.println(this + " killed " + rhs);
         rhs.setHealth(0);
         return rhs;
       } else if (this.health < rhs.health) {
+        System.out.println(rhs + " killed " + this);
         this.health = 0;
         return this;
       } else {
+        System.out.println(this + " and " + rhs + " killed each other");
         this.health = 0;
         rhs.setHealth(0);
         return null;
