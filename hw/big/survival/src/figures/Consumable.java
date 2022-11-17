@@ -5,9 +5,17 @@ public abstract class Consumable extends Figure {
   protected Integer level;
   protected Integer usesLeft;
 
-  public Consumable(Character initial, String name, Integer level)
+  protected Consumable(Character initial, String name, Integer level)
     throws IllegalArgumentException {
     super(initial, name);
+    if (level < 1) {
+      throw new IllegalArgumentException("Level must be greater than 0");
+    }
+
+    if (level > 5) {
+      throw new IllegalArgumentException("Level must be less or equal to 5");
+    }
+
     this.level = level;
   }
 
@@ -41,10 +49,6 @@ public abstract class Consumable extends Figure {
   }
 
   // Setters
-
-  public void setLevel(Integer level) {
-    this.level = level;
-  }
 
   public void decreaseUsesLeft() {
     --this.usesLeft;

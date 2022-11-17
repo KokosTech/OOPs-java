@@ -4,7 +4,6 @@ import figures.Consumable;
 import figures.Figure;
 import figures.Hero;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Game {
@@ -69,32 +68,73 @@ public class Game {
 
     switch (this.getDirection()) {
       case UP:
-        if (this.isValidMove(hero, oldX, oldY - 1)) {
+        if (this.isValidMove(oldX, oldY - 1)) {
           hero.setY(oldY - 1);
         }
         break;
       case DOWN:
-        if (this.isValidMove(hero, x, y + 1)) {
+        if (this.isValidMove(oldX, oldY + 1)) {
           hero.setY(oldY + 1);
         }
         break;
       case LEFT:
-        if (this.isValidMove(hero, x - 1, y)) {
+        if (this.isValidMove(oldX - 1, oldY)) {
           hero.setX(oldX - 1);
         }
         break;
       case RIGHT:
-        if (this.isValidMove(hero, x + 1, y)) {
+        if (this.isValidMove(oldX + 1, oldY)) {
           hero.setX(oldX + 1);
         }
         break;
     }
-    field.moveHero(hero, hero.getX(), hero.getY());
+    _moveHero(hero, hero.getX(), hero.getY());
+  }
+
+  public void _moveHero(Hero hero, Integer x, Integer y) {
+    if (hero == null) {
+      throw new IllegalArgumentException("Hero cannot be null");
+    }
+
+    if (!isValidMove(x, y)) {
+      throw new IllegalArgumentException("Coordinates are not valid");
+    }
+
+    Hero deadHero = null;
+
+    if (!this.field.isPositionEmpty(x, y)) {
+      if (this.field.getFigure(x, y) instanceof Hero) {
+        System.out.println(
+          "Hero " +
+          hero.getName() +
+          " fights hero " +
+          this.field.getFigure(x, y).getName()
+        );
+
+        deadHero = hero.fight((Hero) this.field.getFigure(x, y));
+        if (deadHero != null) {
+          this.removeFigure(deadHero);
+        } else {
+          this.removeFigure(this.field.getFigure(x, y));
+          this.removeFigure(hero);
+        }
+      } else if (this.field.getFigure(x, y) instanceof Consumable) {
+        System.out.println(
+          "Hero " +
+          hero.getName() +
+          " ate a " +
+          this.field.getFigure(x, y).getName()
+        );
+        ((Consumable) this.field.getFigure(x, y)).apply(hero);
+      }
+    }
+
+    this.field.setFigurePosition(hero, x, y);
   }
 
   // Validate Methods
 
-  private boolean isValidMove(Hero hero, Integer x, Integer y) {
+  private boolean isValidMove(Integer x, Integer y) {
     return this.field.areValidCoordinates(x, y);
   }
 

@@ -62,7 +62,7 @@ public class Field {
 
     if (figure.getX() == null || figure.getY() == null) {
       this.setFigurePosition(figure);
-      this.field[figure.getY()][figure.getX()] = figure;
+      this.field[figure.getX()][figure.getY()] = figure;
       return;
     }
 
@@ -76,7 +76,7 @@ public class Field {
       );
     }
 
-    this.field[figure.getY()][figure.getX()] = figure;
+    this.field[figure.getX()][figure.getY()] = figure;
   }
 
   public void removeFigure(Figure figure) {
@@ -88,7 +88,7 @@ public class Field {
       throw new IllegalArgumentException("Coordinates are not valid");
     }
 
-    if (this.field[figure.getY()][figure.getX()] == null) {
+    if (this.field[figure.getX()][figure.getY()] == null) {
       throw new IllegalArgumentException(
         "There is no figure in position " + figure.getPosition()
       );
@@ -99,50 +99,6 @@ public class Field {
 
   // Hero Methods
 
-  public Hero moveHero(Hero hero, Integer x, Integer y) {
-    if (hero == null) {
-      throw new IllegalArgumentException("Hero cannot be null");
-    }
-
-    if (!areValidCoordinates(x, y)) {
-      throw new IllegalArgumentException("Coordinates are not valid");
-    }
-
-    Hero dead = null;
-
-    if (!isPositionEmpty(x, y)) {
-      if (this.field[y][x] instanceof Hero) {
-        System.out.println(
-          "Hero " +
-          hero.getName() +
-          " fights hero " +
-          this.field[y][x].getName()
-        );
-
-        dead = hero.fight((Hero) this.field[y][x]);
-        if(dead != null) {
-          this.removeFigure(dead);
-        } else {
-          this.removeFigure(this.field[y][x]);
-          this.removeFigure(hero);
-        }
-      } else if (this.field[y][x] instanceof Consumable) {
-        System.out.println(
-          "Hero " + hero.getName() + " ate a " + this.field[y][x].getName()
-        );
-        ((Consumable) this.field[y][x]).apply(hero);
-      }
-    }
-
-    this.field[hero.getY()][hero.getX()] = null;
-    this.field[y][x] = hero;
-
-    hero.setX(x);
-    hero.setY(y);
-
-    return dead;
-  }
-
   // Validation Methods
 
   public boolean areValidCoordinates(Integer x, Integer y) {
@@ -150,7 +106,7 @@ public class Field {
   }
 
   public boolean isPositionEmpty(Integer x, Integer y) {
-    return this.field[y][x] == null;
+    return this.field[x][y] == null;
   }
 
   // Getters
@@ -161,6 +117,10 @@ public class Field {
 
   public Integer getCols() {
     return cols;
+  }
+
+  public Figure getFigure(Integer x, Integer y) {
+    return this.field[x][y];
   }
 
   public Figure[][] getField() {
@@ -176,6 +136,21 @@ public class Field {
       x = getRandom(this.cols);
       y = getRandom(this.rows);
     } while (!isPositionEmpty(x, y));
+
+    figure.setX(x);
+    figure.setY(y);
+  }
+
+  public void setFigurePosition(Hero figure, Integer x, Integer y) {
+    if (!areValidCoordinates(x, y)) {
+      throw new IllegalArgumentException("Coordinates are not valid");
+    }
+
+    if (figure.getX() != null && figure.getY() != null) {
+      this.field[figure.getX()][figure.getY()] = null;
+    }
+
+    this.field[x][y] = figure;
 
     figure.setX(x);
     figure.setY(y);
