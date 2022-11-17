@@ -1,4 +1,4 @@
-package figures;
+package game.figures;
 
 import java.util.ArrayList;
 

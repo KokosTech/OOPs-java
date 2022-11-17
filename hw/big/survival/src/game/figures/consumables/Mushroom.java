@@ -1,7 +1,7 @@
-package figures.consumables;
+package game.figures.consumables;
 
-import figures.Consumable;
-import figures.Hero;
+import game.figures.Consumable;
+import game.figures.Hero;
 
 public class Mushroom extends Consumable {
 

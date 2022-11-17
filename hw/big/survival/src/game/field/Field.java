@@ -1,10 +1,9 @@
-package field;
+package game.field;
 
-import figures.Consumable;
-import figures.Figure;
-import figures.Hero;
-import java.util.Arrays;
 import java.util.Random;
+
+import game.figures.Figure;
+import game.figures.Hero;
 
 public class Field {
 

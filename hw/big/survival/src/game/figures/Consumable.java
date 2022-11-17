@@ -1,4 +1,4 @@
-package figures;
+package game.figures;
 
 public abstract class Consumable extends Figure {
 

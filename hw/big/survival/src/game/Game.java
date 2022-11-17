@@ -1,8 +1,10 @@
-import directions.Directions;
-import field.Field;
-import figures.Consumable;
-import figures.Figure;
-import figures.Hero;
+package game;
+
+import game.directions.Directions;
+import game.field.Field;
+import game.figures.Consumable;
+import game.figures.Figure;
+import game.figures.Hero;
 import java.util.ArrayList;
 import java.util.Random;
 
