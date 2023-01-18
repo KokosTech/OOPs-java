@@ -40,3 +40,7 @@ hs_err_pid*
 *.sdf
 *.sln
 *.suo
+
+.DS_Store
+
+/.DS_Store
