@@ -120,6 +120,10 @@ public class OnlineShop {
             throw new IllegalArgumentException("Product already exists");
         }
 
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be positive");
+        }
+
         products.put(product, quantity);
     }
 
@@ -235,16 +239,20 @@ public class OnlineShop {
             throw new IllegalArgumentException("Not enough products in stock");
         }
 
-        if(products.get(product) == quantity) {
+        if (products.get(product) == quantity) {
             products.remove(product);
         } else {
             products.put(product, products.get(product) - quantity);
         }
     }
 
-    public void checkout() {
+    public Double checkout() {
         if (activeUser == null) {
             throw new IllegalArgumentException("No active user");
+        }
+
+        if (activeShoppingCart == null) {
+            throw new IllegalArgumentException("No active shopping cart");
         }
 
         if (activeShoppingCart.getProducts().isEmpty()) {
@@ -291,5 +299,7 @@ public class OnlineShop {
         System.out.println("Total price: " + totalPrice);
         System.out.println("—---------------------------------------------------------------------------");
         activeShoppingCart = new ShoppingCart();
+
+        return totalPrice;
     }
 }
