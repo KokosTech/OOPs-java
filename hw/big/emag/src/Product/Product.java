@@ -25,6 +25,14 @@ public class Product {
         this.category = category;
     }
 
+    public Product(Product product) {
+        this.id = product.getId();
+        this.name = product.getName();
+        this.description = product.getDescription();
+        this.price = product.getPrice();
+        this.category = product.getCategory();
+    }
+
     public Category getCategory() {
         return category;
     }

@@ -235,7 +235,11 @@ public class OnlineShop {
             throw new IllegalArgumentException("Not enough products in stock");
         }
 
-        products.put(product, products.get(product) - quantity);
+        if(products.get(product) == quantity) {
+            products.remove(product);
+        } else {
+            products.put(product, products.get(product) - quantity);
+        }
     }
 
     public void checkout() {
@@ -279,6 +283,7 @@ public class OnlineShop {
 
         for (Product product : activeShoppingCart.getProducts().keySet()) {
             Integer quantity = activeShoppingCart.getProducts().get(product);
+            lowerProductQuantity(product.getId(), quantity);
 
             totalPrice += product.getPrice() * quantity;
         }

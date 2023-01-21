@@ -11,7 +11,12 @@ public class ShoppingCart {
 
     public ShoppingCart(Long id, Map<Product, Integer> products) {
         this.id = id;
-        this.products = products;
+
+        if (products == null) {
+            this.products = new HashMap<>();
+        } else {
+            this.products = products;
+        }
     }
 
     public ShoppingCart(Long id) {
@@ -39,9 +44,9 @@ public class ShoppingCart {
 
     public void addProduct(Product product, Integer quantity) {
         if (products.containsKey(product)) {
-            products.put(product, products.get(product) + quantity);
+            products.put(new Product(product), products.get(product) + quantity);
         } else {
-            products.put(product, quantity);
+            products.put(new Product(product), quantity);
         }
     }
 
