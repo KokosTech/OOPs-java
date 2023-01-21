@@ -5,7 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4fcae049-5076-4820-a5f7-db558ec44772" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/OnlineShopTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emag.iml" beforeDir="false" afterPath="$PROJECT_DIR$/emag.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/OnlineShop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/OnlineShop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Product/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/ApplicableTo/CategoryPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/ApplicableTo/CategoryPromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/ApplicableTo/ProductPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/ApplicableTo/ProductPromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Kind/PercentDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Kind/PercentDiscount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Kind/ValueDiscount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Kind/ValueDiscount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Promotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Type/CategoryPercentPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Type/CategoryPercentPromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Type/CategoryValuePromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Type/CategoryValuePromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Type/ProductPercentPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Type/ProductPercentPromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Promotion/Type/ProductValuePromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Promotion/Type/ProductValuePromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShoppingCart/ShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ShoppingCart/ShoppingCart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/User/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/User/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +32,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -30,20 +49,101 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.OnlineShopTest.addPromotion">
+    <configuration name="OnlineShopTest.addProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="emag" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OnlineShopTest" />
+      <option name="METHOD_NAME" value="addProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineShopTest.addPromotion" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="emag" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OnlineShopTest" />
+      <option name="METHOD_NAME" value="addPromotion" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineShopTest.buyProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="emag" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OnlineShopTest" />
+      <option name="METHOD_NAME" value="buyProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineShopTest.checkout" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="emag" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OnlineShopTest" />
+      <option name="METHOD_NAME" value="checkout" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OnlineShopTest.listProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="emag" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="OnlineShopTest" />
+      <option name="METHOD_NAME" value="listProducts" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.OnlineShopTest.addPromotion" />
+        <item itemvalue="JUnit.OnlineShopTest.buyProduct" />
+        <item itemvalue="JUnit.OnlineShopTest.listProducts" />
+        <item itemvalue="JUnit.OnlineShopTest.checkout" />
+        <item itemvalue="JUnit.OnlineShopTest.addProduct" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,6 +157,9 @@
       <workItem from="1673980304011" duration="3360000" />
       <workItem from="1674131117883" duration="1222000" />
       <workItem from="1674154465235" duration="1495000" />
+      <workItem from="1674208445040" duration="604000" />
+      <workItem from="1674301102473" duration="1799000" />
+      <workItem from="1674320872282" duration="12706000" />
     </task>
     <servers />
   </component>
