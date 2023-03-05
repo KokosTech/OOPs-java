@@ -25,7 +25,7 @@ public class SUV extends Vehicle {
         if (has4by4 == null)
             throw new IllegalArgumentException("4x4 cannot be null");
 
-        if (clearance < 0)
+        if (clearance < 1)
             throw new IllegalArgumentException("Clearance must be greater than 0");
 
         this.has4by4 = has4by4;

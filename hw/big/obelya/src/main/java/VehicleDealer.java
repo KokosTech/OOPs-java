@@ -1,3 +1,4 @@
+import Vehicle.Type.CarEquipment.EquipmentLevel;
 import Vehicle.Vehicle;
 import Vehicle.Type.Car;
 import Vehicle.Type.SUV;
@@ -64,6 +65,13 @@ public class VehicleDealer {
         return suvs
                 .stream()
                 .filter(SUV::getHas4by4) // checks if the SUV has 4by4 ✨ (omg, i can use emojis in comments)
+                .collect(Collectors.toSet());
+    }
+
+    Set<Car> getAllCarsWithEquipmentLevel(EquipmentLevel equipmentLevel) {
+        return cars
+                .stream()
+                .filter(car -> car.getEquipmentLevel().equals(equipmentLevel))
                 .collect(Collectors.toSet());
     }
 
